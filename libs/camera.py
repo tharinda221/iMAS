@@ -1,6 +1,6 @@
 import time
 import cv2
-
+import cv2.cv as cv
 
 class Camera(object):
     """An emulated camera implementation that streams a repeated sequence of
