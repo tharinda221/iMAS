@@ -1,5 +1,5 @@
-from flask_restful import Resource
 from flask import Response
+from flask_restful import Resource
 from libs.camera import Camera
 
 def gen(camera):
@@ -14,3 +14,4 @@ class camera(Resource):
     def get(self):
         return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+

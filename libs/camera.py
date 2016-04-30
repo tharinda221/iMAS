@@ -1,5 +1,7 @@
 import time
 import cv2
+from motion import *
+
 
 class Camera(object):
     """An emulated camera implementation that streams a repeated sequence of
@@ -13,8 +15,11 @@ class Camera(object):
 
     def get_frame(self):
         ret, img = self.cam.read()
-        ret2, jpeg = cv2.imencode('.jpg', img)
+        ret2, jpeg = cv2.imencode('.jpg', motionDetector(self.cam))
         return jpeg.tostring()
 
     def __del__(self):
         self.cam.release()
+
+    def getCam(self):
+        return self.cam

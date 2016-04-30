@@ -1,7 +1,10 @@
-from flask_restful import Resource
 from flask import make_response, render_template
-from backendData.frontendOperations.indexOperations import *
+from flask_restful import Resource
+
+from backendData.applications.motionDetector.motionDetector import *
 from backendData.database.operations import *
+from backendData.frontendOperations.indexOperations import *
+from libs.camera import Camera
 
 facebookAppCount = NumberOfiMASApps()
 FacebookAppList = getiMASAppsIDList()
@@ -23,6 +26,7 @@ class runApplication(Resource):
     def get(self, appId):
         appDetails = getiMASAppDetailsById(appId)
         headers = {'Content-Type': 'text/html'}
+        #motion_detector(Camera().getCam())
         return make_response(
                 render_template('facebook/facebookAdminApp/facebookAppDetailPage.html', authorized=False,
                                 id=00,
