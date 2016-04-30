@@ -1,6 +1,5 @@
 import time
 import cv2
-import cv2.cv as cv
 
 class Camera(object):
     """An emulated camera implementation that streams a repeated sequence of
@@ -8,9 +7,9 @@ class Camera(object):
 
     def __init__(self):
         self.cam = cv2.VideoCapture(0)
-        self.cam.set(3, 800)
-        self.cam.set(4, 600)
-        time.sleep(1)
+        self.cam.set(3, 400)
+        self.cam.set(4, 300)
+        time.sleep(0.1)
 
     def get_frame(self):
         ret, img = self.cam.read()
