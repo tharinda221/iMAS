@@ -35,7 +35,7 @@ def detectMotion(image, md_average, md_weight):
     # Subtract the current frame from the moving average.
     md_result = cv2.absdiff(binaryImage, runAvg)
 
-    cv2.imshow('Motion detect', md_result)
+    #cv2.imshow('Motion detect', md_result)
 
     # Find the contours
     contours, hierarchy = cv2.findContours(md_result, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
