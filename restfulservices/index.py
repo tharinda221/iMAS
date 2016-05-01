@@ -26,7 +26,7 @@ class runApplication(Resource):
     def get(self, appId):
         appDetails = getiMASAppDetailsById(appId)
         headers = {'Content-Type': 'text/html'}
-        #motion_detector(Camera().getCam())
+        common.appID = appId
         return make_response(
                 render_template('facebook/facebookAdminApp/facebookAppDetailPage.html', authorized=False,
                                 id=00,

@@ -6,6 +6,7 @@ class common:
 
     ApplicationSecret = ""
     numOfAppsPerPage = 8
+    appID = ""
     #baseUrl = "http://" + host + ":" + str(port)
     # baseUrl = "http://jsapps.co"
 

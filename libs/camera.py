@@ -1,6 +1,7 @@
 import time
 import cv2
-from motion import *
+from Applications import application
+runApplicaions = application()
 
 
 class Camera(object):
@@ -13,9 +14,13 @@ class Camera(object):
         self.cam.set(4, 300)
         time.sleep(0.1)
 
-    def get_frame(self):
+    def get_frame(self,obj):
+        method_name = obj.AppMethodName
+        method = getattr(runApplicaions, method_name)
+        if not method:
+            raise Exception("Method %s not implemented" % method_name)
         ret, img = self.cam.read()
-        ret2, jpeg = cv2.imencode('.jpg', motionDetector(self.cam))
+        ret2, jpeg = cv2.imencode('.jpg', method(self.cam))
         return jpeg.tostring()
 
     def __del__(self):

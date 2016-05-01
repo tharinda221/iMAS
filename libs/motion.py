@@ -73,61 +73,62 @@ cascade = cv2.CascadeClassifier(cascade_def)
 
 # Located in openCV source: data/
 # Haar cascade files
-def motionDetector(cam):
-    # Setup cam capture
-    # cam = create_capture(video_src)
 
-    # Setup motion detection
-    # md_average needs to be setup with the same type of picture as used in motion detection
-    ret, img = cam.read()
-    img, gray = preProcess(img)
-    flag, gray = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)  # cv2.THRESH_BINARY = 0
-
-    # Motion detection variables
-    md_average = np.float32(gray)
-    md_result = np.float32(gray)
-    md_weight = 0.9
-
-    # Setup default cam window
-    # cv2.namedWindow(highgui_name)
-    # cv2.createTrackbar("md_weight", highgui_name, int(md_weight*100), 100, md_weight_change)
-
-
-    # Read and preprocess image
-    success, orig_img = cam.read()
-    (orig_img, gray) = preProcess(orig_img)
-
-    # Get the new trackbar value
-    # md_weight = cv2.getTrackbarPos("md_weight", highgui_name) * 0.01
-    #
-    # if not success:
-    #     print "Cam read error. WTF mate"
-    #     break
-
-    # Detect the faces
-    faces = detectFaces(gray)
-
-    # Detect motion
-    contours = detectMotion(gray,md_average,md_weight)
-
-    # Add all face points aquired
-    for (x, y, width, height) in faces:
-        cv2.rectangle(orig_img, (x, y), (x + width, y + height), (255, 0, 0), 2)
-
-    # Apply the contours
-    for cnt in contours:
-        color = np.random.randint(0, 255, (3)).tolist()  # Select a random color. Hippiestyle!
-        cv2.drawContours(orig_img, [cnt], 0, color, 2)
-
-    # Add some text
-    text_color = (255, 0, 0)  # color as (B,G,R)
-    # cv2.putText(orig_img, "Hello world", (45, 20), cv2.FONT_HERSHEY_PLAIN, 1, text_color, thickness=1, lineType=cv2.CV_AA)
-
-    # cv2.imshow(highgui_name, orig_img)
-
-    # if cv2.waitKey(20) == 27:  # Esc pressed
-    #     break
-
-    # End
-    # cv2.destroyAllWindows()
-    return orig_img
+# def motionDetector(cam):
+#     # Setup cam capture
+#     # cam = create_capture(video_src)
+#
+#     # Setup motion detection
+#     # md_average needs to be setup with the same type of picture as used in motion detection
+#     ret, img = cam.read()
+#     img, gray = preProcess(img)
+#     flag, gray = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)  # cv2.THRESH_BINARY = 0
+#
+#     # Motion detection variables
+#     md_average = np.float32(gray)
+#     md_result = np.float32(gray)
+#     md_weight = 0.9
+#
+#     # Setup default cam window
+#     # cv2.namedWindow(highgui_name)
+#     # cv2.createTrackbar("md_weight", highgui_name, int(md_weight*100), 100, md_weight_change)
+#
+#
+#     # Read and preprocess image
+#     success, orig_img = cam.read()
+#     (orig_img, gray) = preProcess(orig_img)
+#
+#     # Get the new trackbar value
+#     # md_weight = cv2.getTrackbarPos("md_weight", highgui_name) * 0.01
+#     #
+#     # if not success:
+#     #     print "Cam read error. WTF mate"
+#     #     break
+#
+#     # Detect the faces
+#     faces = detectFaces(gray)
+#
+#     # Detect motion
+#     contours = detectMotion(gray,md_average,md_weight)
+#
+#     # Add all face points aquired
+#     for (x, y, width, height) in faces:
+#         cv2.rectangle(orig_img, (x, y), (x + width, y + height), (255, 0, 0), 2)
+#
+#     # Apply the contours
+#     for cnt in contours:
+#         color = np.random.randint(0, 255, (3)).tolist()  # Select a random color. Hippiestyle!
+#         cv2.drawContours(orig_img, [cnt], 0, color, 2)
+#
+#     # Add some text
+#     text_color = (255, 0, 0)  # color as (B,G,R)
+#     # cv2.putText(orig_img, "Hello world", (45, 20), cv2.FONT_HERSHEY_PLAIN, 1, text_color, thickness=1, lineType=cv2.CV_AA)
+#
+#     # cv2.imshow(highgui_name, orig_img)
+#
+#     # if cv2.waitKey(20) == 27:  # Esc pressed
+#     #     break
+#
+#     # End
+#     # cv2.destroyAllWindows()
+#     return orig_img

@@ -2,7 +2,8 @@
     <div class="row">
         {% block pageTitle %}
             <div class="col-md-3">
-                <h1 style="font-size: 4em; margin-top: -15px;">iMAS</h1>
+{#                <h1 style="font-size: 4em; margin-top: -15px;">iMAS</h1>#}
+            <img src="{{ url_for('static', filename = 'images/common/logo.png') }}">
             </div>
         {% endblock %}
         {% block login %}

@@ -9,14 +9,14 @@ from backendData.objects.app import *
 def putFacebookAppsData():
     databaseCollections.iMASappsCollection.insert(
             {
-                "AppName": "Motion Detector",
-                "AppMethodName": "MotionDetector",
-                "AppImage": "images/appImages/app1/appImage.jpg",
-                "AppSourceImage": "images/appImages/app1/background.jpg",
-                "AppResultImage": "images/appImages/app1/appResultImage.jpg",
+                "AppName": "People counting",
+                "AppMethodName": "EdgeDetector",
+                "AppImage": "images/appImages/app3/appImage.jpg",
+                "AppSourceImage": "images/appImages/app3/background.jpg",
+                "AppResultImage": "images/appImages/app3/appResultImage.jpg",
                 "AppUsedCount": 0,
                 "AppCreatedTime": datetime.datetime.utcnow(),
-                "AppDescription": "A motion detector is a device that detects moving objects, particularly people.",
+                "AppDescription": "The number of people in a specific area is counted..",
                 "AppType": "userCreatable"
             }
     )
@@ -49,6 +49,7 @@ def getiMASAppDetailsById(Id):
               apptype=document["AppType"])
 
     return obj
+
 
 def getiMASAppsIDList():
     return databaseCollections.iMASappsCollection.distinct('_id')

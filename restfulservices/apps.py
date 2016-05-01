@@ -13,6 +13,5 @@ def gen(motion):
 
 class motionDetector(Resource):
     def get(self):
-        print "hello"
         # return Response(motion_detector(Camera().getCam()), mimetype='text/plain')
         return Response(gen(MotionDetector()), mimetype='multipart/x-mixed-replace; boundary=frame')
